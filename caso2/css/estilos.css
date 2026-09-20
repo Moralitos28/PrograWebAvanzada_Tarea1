@@ -123,11 +123,13 @@ nav a:focus-visible { outline: 2px solid white; outline-offset: 2px; }
 }
 
 .lista-ahora, .lista-proximas { display: grid; gap: var(--espacio); }
-.actual { position: relative; padding-top: 3rem; }
+.actual { position: relative; padding-bottom: 3rem; }
 .estado {
   position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
+  bottom: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
   padding: 0.2rem 0.5rem;
   border-radius: var(--radio);
   background: #1e6b3a;
@@ -138,6 +140,10 @@ nav a:focus-visible { outline: 2px solid white; outline-offset: 2px; }
 .lista-proximas article { display: flex; gap: var(--espacio); }
 .lista-proximas p { margin: 0; }
 .grid-escenarios { display: grid; gap: var(--espacio); }
+.grid-escenarios article {
+  display: flex;
+  flex-direction: column;
+}
 .grid-escenarios img {
   display: block;
   width: 100%;
@@ -146,6 +152,24 @@ nav a:focus-visible { outline: 2px solid white; outline-offset: 2px; }
   object-fit: contain;
   background: var(--color-fondo);
   border-radius: var(--radio);
+}
+
+.tipo-escenario {
+  display: block;
+  width: fit-content;
+  order: 1;
+  margin: auto auto 0.25rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radio);
+  background: var(--color-principal-claro);
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.escenario-teatro {
+  min-height: 13rem;
+  background: #e1edf2;
 }
 .cambios { padding: var(--espacio); background: var(--color-aviso); border-left: 0.4rem solid #8a5c00; }
 .lista-servicios { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; list-style: none; }
@@ -168,5 +192,5 @@ footer p { margin: 0 0 0.25rem; color: white; }
   }
   .escenarios, .servicios { grid-column: 1 / -1; }
   .lista-ahora { grid-template-columns: repeat(3, 1fr); }
-  .grid-escenarios { grid-template-columns: repeat(4, 1fr); }
+  .grid-escenarios { grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); }
 }
