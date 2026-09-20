@@ -64,32 +64,72 @@ a:hover {
 
 /* === Header con sticky === */
 header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
   background-color: var(--color-primary);
-  color: #ffffff;
-  padding: var(--space-md);
 }
 
-header h1 {
-  color: #ffffff;
-  margin-bottom: var(--space-xs);
+.hero {
+  position: relative;
+  min-height: clamp(14rem, 32vw, 22rem);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
 }
 
-header p {
-  color: #ffffffcc;
-  font-size: 0.875rem;
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgb(0 0 0 / 0.28),
+    rgb(17 45 35 / 0.78)
+  );
+}
+
+.hero img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 48rem;
+  padding: var(--space-xl);
+  text-align: center;
+  color: #ffffff;
+}
+
+.hero-content h1 {
+  color: #ffffff;
+  font-size: clamp(1.7rem, 4vw, 3rem);
+  margin-bottom: var(--space-sm);
+}
+
+.hero-content p {
+  color: rgb(255 255 255 / 0.9);
   margin-bottom: var(--space-xs);
 }
 
 /* === Navegacion con Flexbox === */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-primary);
+}
+
 nav ul {
   list-style: none;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: var(--space-sm);
-  margin-top: var(--space-sm);
 }
 
 nav a {
