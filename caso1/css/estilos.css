@@ -9,6 +9,8 @@
 
 /* === Variables CSS === */
 :root {
+
+  /* === Colores CSS === */
   --color-primary: #2b4c3f;
   --color-primary-light: #3a6b55;
   --color-accent: #d4a843;
@@ -23,11 +25,15 @@
   --color-medium-border: #8d4704;
   --color-info-bg: #eaf2fb;
   --color-info-border: #17406e;
+  --color-success-bg: #e8f4ed;
+  --color-warning-bg: #fff3e2;
   --color-bg: #f4f1ec;
   --color-surface: #ffffff;
   --color-text: #1e1e1e;
   --color-text-secondary: #555555;
   --color-border: #d1cbc2;
+
+  /* === Espaciado y bordes CSS === */
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
   --space-md: 1rem;
@@ -234,6 +240,88 @@ article:last-child {
 #mission article,
 #teams article {
   margin-bottom: 0;
+}
+
+.mission-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.mission-card__header h3 {
+  margin-bottom: var(--space-sm);
+}
+
+.priority,
+.mission-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.priority {
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.priority img {
+  inline-size: 1.125rem;
+  block-size: 1.125rem;
+}
+
+.mission-status {
+  width: fit-content;
+  margin-top: var(--space-sm);
+  margin-bottom: 0;
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid currentColor;
+  border-radius: 999px;
+}
+
+.status-icon {
+  inline-size: 1rem;
+  block-size: 1rem;
+  flex: 0 0 auto;
+  background-color: currentColor;
+}
+
+.mission-status--progress {
+  color: var(--color-info);
+  background-color: var(--color-info-bg);
+}
+
+.mission-status--progress .status-icon {
+  mask: url("../img/inProgress.svg") center / contain no-repeat;
+}
+
+.mission-status--pending {
+  color: var(--color-warning);
+  background-color: var(--color-warning-bg);
+}
+
+.mission-status--pending .status-icon {
+  mask: url("../img/pendingTask.svg") center / contain no-repeat;
+}
+
+.mission-status--suspended {
+  color: var(--color-danger);
+  background-color: var(--color-high-bg);
+}
+
+.mission-status--suspended .status-icon {
+  mask: url("../img/suspendedProgress.svg") center / contain no-repeat;
+}
+
+.mission-status--completed {
+  color: var(--color-primary);
+  background-color: var(--color-success-bg);
+}
+
+.mission-status--completed .status-icon {
+  mask: url("../img/completed.svg") center / contain no-repeat;
 }
 
 /* === Alertas: diferenciacion visual === */
