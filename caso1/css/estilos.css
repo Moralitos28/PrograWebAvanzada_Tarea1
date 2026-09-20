@@ -1,0 +1,489 @@
+/* === Reset basico === */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* === Variables CSS === */
+:root {
+
+  /* === Colores CSS === */
+  --color-primary: #2b4c3f;
+  --color-primary-light: #3a6b55;
+  --color-accent: #d4a843;
+  --color-danger: #b83a3a;
+  --color-warning: #c47f17;
+  --color-info: #2a7ab5;
+  --color-critical-bg: #faeeee;
+  --color-critical-border: #8f2525;
+  --color-high-bg: #fceded;
+  --color-high-border: #b83a3a;
+  --color-medium-bg: #fff3e2;
+  --color-medium-border: #8d4704;
+  --color-info-bg: #eaf2fb;
+  --color-info-border: #17406e;
+  --color-success-bg: #e8f4ed;
+  --color-warning-bg: #fff3e2;
+  --color-bg: #f4f1ec;
+  --color-surface: #ffffff;
+  --color-text: #1e1e1e;
+  --color-text-secondary: #555555;
+  --color-border: #d1cbc2;
+
+  /* === Espaciado y bordes CSS === */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --radius: 0.375rem;
+  --max-width: 75rem;
+}
+
+/* === Estilos base === */
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  line-height: 1.2;
+  color: var(--color-primary);
+}
+
+h1 { font-size: 1.4rem; }
+h2 { font-size: 1.2rem; margin-bottom: var(--space-sm); }
+h3 { font-size: 1rem; margin-bottom: var(--space-xs); }
+
+p {
+  margin-bottom: var(--space-xs);
+  color: var(--color-text-secondary);
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* === Header con sticky === */
+header {
+  background-color: var(--color-primary);
+}
+
+.hero {
+  position: relative;
+  min-height: clamp(14rem, 32vw, 22rem);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgb(0 0 0 / 0.28),
+    rgb(17 45 35 / 0.78)
+  );
+}
+
+.hero img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 48rem;
+  padding: var(--space-xl);
+  text-align: center;
+  color: #ffffff;
+}
+
+.hero-content h1 {
+  color: #ffffff;
+  font-size: clamp(1.7rem, 4vw, 3rem);
+  margin-bottom: var(--space-sm);
+}
+
+.hero-content p {
+  color: rgb(255 255 255 / 0.9);
+  margin-bottom: var(--space-xs);
+}
+
+/* === Navegacion con Flexbox === */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-primary);
+  border-top: 1px solid var(--color-primary-light);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: min(100%, 62rem);
+  gap: var(--space-sm);
+  margin: 0 auto;
+}
+
+nav li {
+  flex: 1 1 7rem;
+}
+
+nav a {
+  display: block;
+  color: var(--color-surface);
+  font-size: 0.9rem;
+  font-weight: 650;
+  padding: var(--space-sm) 0.8rem;
+  border: 0;
+  border-radius: 0;
+  text-align: center;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+nav a:hover,
+nav a:focus-visible {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+nav a:focus-visible {
+  outline: 2px solid var(--color-surface);
+  outline-offset: 2px;
+}
+
+/* === Main: Grid mobile-first (1 columna) === */
+main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  padding: var(--space-md);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* === Secciones === */
+section, aside {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-md);
+}
+
+/* === Tarjetas (articles) === */
+article {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+
+article:last-child {
+  margin-bottom: 0;
+}
+
+/* === Resumen: grid para aislar h2 de las tarjetas === */
+#resume {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-sm);
+}
+
+#resume h2 {
+  grid-column: 1 / -1;
+}
+
+#resume article {
+  position: relative;
+  min-height: 10rem;
+  margin-bottom: 0;
+}
+
+#resume article h3 {
+  position: relative;
+  z-index: 1;
+}
+
+#resume article p {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* === Misiones y equipos: paneles con tarjetas en cuadrícula === */
+#mission,
+#teams {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-sm);
+}
+
+#mission h2,
+#teams h2 {
+  grid-column: 1 / -1;
+}
+
+#mission article,
+#teams article {
+  margin-bottom: 0;
+}
+
+.mission-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.mission-card__header h3 {
+  margin-bottom: var(--space-sm);
+}
+
+.priority,
+.mission-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.priority {
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.priority img {
+  inline-size: 1.125rem;
+  block-size: 1.125rem;
+}
+
+.mission-status {
+  width: fit-content;
+  margin-top: var(--space-sm);
+  margin-bottom: 0;
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid currentColor;
+  border-radius: 999px;
+}
+
+.status-icon {
+  inline-size: 1rem;
+  block-size: 1rem;
+  flex: 0 0 auto;
+  background-color: currentColor;
+}
+
+.mission-status--progress {
+  color: var(--color-info);
+  background-color: var(--color-info-bg);
+}
+
+.mission-status--progress .status-icon {
+  mask: url("../img/inProgress.svg") center / contain no-repeat;
+}
+
+.mission-status--pending {
+  color: var(--color-warning);
+  background-color: var(--color-warning-bg);
+}
+
+.mission-status--pending .status-icon {
+  mask: url("../img/pendingTask.svg") center / contain no-repeat;
+}
+
+.mission-status--suspended {
+  color: var(--color-danger);
+  background-color: var(--color-high-bg);
+}
+
+.mission-status--suspended .status-icon {
+  mask: url("../img/suspendedProgress.svg") center / contain no-repeat;
+}
+
+.mission-status--completed {
+  color: var(--color-primary);
+  background-color: var(--color-success-bg);
+}
+
+.mission-status--completed .status-icon {
+  mask: url("../img/completed.svg") center / contain no-repeat;
+}
+
+/* === Alertas: diferenciacion visual === */
+#alerts {
+  border-left: 4px solid var(--color-text);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-sm);
+}
+
+#alerts h2 {
+  color: var(--color-text);
+  grid-column: 1 / -1;
+}
+
+#alerts article {
+  border-left: 3px solid var(--color-border);
+  margin-bottom: 0;
+}
+
+#alerts .alert--critical {
+  background-color: var(--color-critical-bg);
+  border-color: var(--color-critical-border);
+  border-left: 0.5rem solid var(--color-critical-border);
+}
+
+#alerts .alert--critical h3 {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+#alerts .alert-icon {
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
+  flex: 0 0 auto;
+  background-color: var(--color-critical-border);
+  mask: url("../img/critical-ico.svg") center / contain no-repeat;
+}
+
+#alerts .alert--high {
+  background-color: var(--color-high-bg);
+  border-color: var(--color-high-border);
+  border-left: 0.5rem solid var(--color-high-border);
+}
+
+#alerts .alert--medium {
+  background-color: var(--color-medium-bg);
+  border-color: var(--color-medium-border);
+  border-left: 0.5rem solid var(--color-medium-border);
+}
+
+#alerts .alert--info {
+  background-color: var(--color-info-bg);
+  border-color: var(--color-info-border);
+  border-left: 0.5rem solid var(--color-info-border);
+}
+
+/* === Agenda === */
+#agenda ol {
+  list-style-position: inside;
+  padding-left: var(--space-sm);
+}
+
+#agenda li {
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+#agenda li:last-child {
+  border-bottom: none;
+}
+
+/* === Footer === */
+footer {
+  text-align: center;
+  padding: var(--space-md);
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--space-lg);
+}
+
+/* === Tablet: min 48rem === */
+@media (min-width: 48rem) {
+  header {
+    text-align: center;
+  }
+
+  nav ul {
+    justify-content: center;
+  }
+
+  main {
+    grid-template-columns: repeat(2, 1fr);
+    padding: var(--space-lg);
+  }
+
+  #agenda {
+    grid-column: 1 / -1;
+  }
+
+  #resume {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  #mission,
+  #teams {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #alerts {
+    grid-column: 1 / -1;
+  }
+}
+
+/* === Escritorio: min 64rem === */
+@media (min-width: 64rem) {
+  main {
+    grid-template-columns: 1fr;
+  }
+
+  #resume,
+  #agenda {
+    grid-column: auto;
+  }
+
+  #alerts {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  #mission {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  #teams {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  #alerts {
+    grid-template-columns: 1fr;
+  }
+}
