@@ -231,14 +231,19 @@ article:last-child {
 /* === Alertas: diferenciacion visual === */
 #alerts {
   border-left: 4px solid var(--color-danger);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-sm);
 }
 
 #alerts h2 {
   color: var(--color-danger);
+  grid-column: 1 / -1;
 }
 
 #alerts article {
   border-left: 3px solid var(--color-border);
+  margin-bottom: 0;
 }
 
 /* === Agenda === */
@@ -288,6 +293,7 @@ footer {
   }
 
   #resume {
+    grid-column: 1 / -1;
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
@@ -295,6 +301,10 @@ footer {
   #teams {
     grid-column: 1 / -1;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #alerts {
+    grid-column: 1 / -1;
   }
 }
 
@@ -323,6 +333,6 @@ footer {
   }
 
   #alerts {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
   }
 }
