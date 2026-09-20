@@ -138,6 +138,15 @@ nav a:focus-visible { outline: 2px solid white; outline-offset: 2px; }
 .lista-proximas article { display: flex; gap: var(--espacio); }
 .lista-proximas p { margin: 0; }
 .grid-escenarios { display: grid; gap: var(--espacio); }
+.grid-escenarios img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  margin-bottom: var(--espacio-pequeno);
+  object-fit: contain;
+  background: var(--color-fondo);
+  border-radius: var(--radio);
+}
 .cambios { padding: var(--espacio); background: var(--color-aviso); border-left: 0.4rem solid #8a5c00; }
 .lista-servicios { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; list-style: none; }
 .lista-servicios li { padding: 0.5rem; background: var(--color-superficie); border: 1px solid var(--color-borde); border-radius: var(--radio); }
